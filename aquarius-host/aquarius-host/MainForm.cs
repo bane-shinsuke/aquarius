@@ -142,5 +142,12 @@ namespace aquarius_host
         {
             this.WindowState = FormWindowState.Normal;
         }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+                this.button1.Enabled = this.radioButton2.Checked;
+                this.button2.Enabled = this.radioButton2.Checked;
+
+        }
     }
 }
