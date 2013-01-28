@@ -140,7 +140,7 @@ namespace aquarius_host
 
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
         {
-            this.Show();
+            this.WindowState = FormWindowState.Normal;
         }
     }
 }
