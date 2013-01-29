@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Clock Synchronizer</title>
+
+   <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+   <!--script type="text/javascript" src="http://use.typekit.com/oya4cmx.js"></script-->
+   <!--script type="text/javascript">try{Typekit.load();}catch(e){}</script-->
+   <!--link rel="stylesheet" href="style.css" /-->
+</head>
+<body>
+   <script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+   <script src="js/bootstrap.js"></script>
+   <script src="script.js"></script>
+<div class="jumbotron masthead">
+  <div class="container">
+    <h1>Bootstrap</h1>
+    <p>Your can synchronize your clock everywhere. /p>
+    <p>
+      <a href="assets/bootstrap.zip" class="btn btn-primary btn-large" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Download', 'Download 2.2.2']);">Download Bootstrap</a>
+    </p>
+    <ul class="masthead-links">
+      <li>
+        <a href="http://github.com/twitter/bootstrap" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'GitHub project']);">GitHub project</a>
+      </li>
+      <li>
+        <a href="./getting-started.html#examples" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'Examples']);">Examples</a>
+      </li>
+      <li>
+        <a href="./extend.html" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'Extend']);">Extend</a>
+      </li>
+      <li>
+        Version 2.2.2
+      </li>
+    </ul>
+  </div>
+</div>
+   
+<div class="container">
+   <header>
+      <h1>Clock Synchronizer</h1>
+   </header>
+   <section id="fetch">
+      <button class="btn btn-primary btn-large" id="search" onClick="power('on')">Power On</button>
+      <button class="btn btn-primary btn-large" id="search" onClick="power('off')">Power Off</button>
+   </section>
+   
+   <div class="alert fade off"  data-alert="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Success!!</strong> 
+          </div>
+          
+     
+</div>
+</body>
+</html>
