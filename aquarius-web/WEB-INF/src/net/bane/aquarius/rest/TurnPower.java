@@ -1,5 +1,7 @@
 package net.bane.aquarius.rest;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Calendar;
 
 import javax.ws.rs.FormParam;
@@ -11,13 +13,25 @@ import javax.ws.rs.core.MediaType;
 
 //The Java class will be hosted at the URI path "/helloworld"
 @Path("/power")
-public class HelloResource {
+public class TurnPower {
     @POST
     @Produces(MediaType.TEXT_PLAIN)
     public String turnPower( @FormParam("value") String value) {
+    	
+    	
     	Calendar now = Calendar.getInstance(); //インスタンス化
 
     	System.out.println(value);
+    	
+    	if(value != null) {
+    		File file = new File("c:/temp/aquarius-work/" + value);
+    		try {
+				file.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+    		
+    	}
         int h = now.get(now.HOUR_OF_DAY);//時を取得
         int m = now.get(now.MINUTE);     //分を取得
         int s = now.get(now.SECOND);      //秒を取得
