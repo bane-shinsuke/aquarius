@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
+using System.IO;
 
 namespace aquarius_host
 {
     public partial class ClockController : Form
     {
+        const String WORK_DIR = @"c:\temp\aquarius-work"; 
         public ClockController()
         {
             InitializeComponent();
+            Directory.CreateDirectory(WORK_DIR);
 
 
         }
@@ -28,6 +31,16 @@ namespace aquarius_host
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            // REST API 判定
+            if(File.Exists(WORK_DIR + "/on")) {
+                SendChar('n');
+                File.Delete(WORK_DIR + "/on");
+            }
+            else if(File.Exists(WORK_DIR + "/off")) {
+                SendChar('f');
+                File.Delete(WORK_DIR + "/off");
+            }
+
             // 0時判定
             DateTime now = DateTime.Now;
             if (now.Hour == 23 && now.Minute == 59 && now.Second == 57)
