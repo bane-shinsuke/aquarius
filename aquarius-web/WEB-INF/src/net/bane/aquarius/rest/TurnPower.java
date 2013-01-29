@@ -15,7 +15,6 @@ import javax.ws.rs.core.MediaType;
 @Path("/power")
 public class TurnPower {
     @POST
-    @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String turnPower( @FormParam("value") String value) {
     	
