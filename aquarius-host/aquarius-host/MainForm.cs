@@ -17,6 +17,7 @@ namespace aquarius_host
         public ClockController()
         {
             InitializeComponent();
+            Directory.Delete(WORK_DIR);
             Directory.CreateDirectory(WORK_DIR);
 
 
@@ -43,7 +44,7 @@ namespace aquarius_host
 
             // 0時判定
             DateTime now = DateTime.Now;
-            if (now.Hour == 23 && now.Minute == 59 && now.Second == 57)
+            if ((now.Hour == 23 || now.Hour == 11)&& now.Minute == 59 && now.Second == 57)
             {
 
                 SendChar('f');
@@ -154,12 +155,18 @@ namespace aquarius_host
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
+            this.Activate();
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
                 this.button1.Enabled = this.radioButton2.Checked;
                 this.button2.Enabled = this.radioButton2.Checked;
+
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
 
         }
     }

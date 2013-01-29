@@ -41,16 +41,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -59,9 +59,9 @@
             // 
             // connectBtn
             // 
-            this.connectBtn.Location = new System.Drawing.Point(216, 161);
+            this.connectBtn.Location = new System.Drawing.Point(216, 149);
             this.connectBtn.Name = "connectBtn";
-            this.connectBtn.Size = new System.Drawing.Size(136, 38);
+            this.connectBtn.Size = new System.Drawing.Size(136, 35);
             this.connectBtn.TabIndex = 0;
             this.connectBtn.Text = "Connect";
             this.connectBtn.UseVisualStyleBackColor = true;
@@ -70,7 +70,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 16F);
-            this.textBox1.Location = new System.Drawing.Point(51, 166);
+            this.textBox1.Location = new System.Drawing.Point(51, 153);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(132, 29);
             this.textBox1.TabIndex = 1;
@@ -80,9 +80,9 @@
             // button1
             // 
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(213, 196);
+            this.button1.Location = new System.Drawing.Point(213, 181);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 38);
+            this.button1.Size = new System.Drawing.Size(136, 35);
             this.button1.TabIndex = 2;
             this.button1.Text = "Power Off";
             this.button1.UseVisualStyleBackColor = true;
@@ -93,9 +93,9 @@
             this.label1.BackColor = System.Drawing.SystemColors.Info;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(51, 58);
+            this.label1.Location = new System.Drawing.Point(51, 54);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(301, 63);
+            this.label1.Size = new System.Drawing.Size(301, 58);
             this.label1.TabIndex = 3;
             this.label1.Text = "label1";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -103,9 +103,9 @@
             // button2
             // 
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(52, 196);
+            this.button2.Location = new System.Drawing.Point(52, 181);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(132, 38);
+            this.button2.Size = new System.Drawing.Size(132, 35);
             this.button2.TabIndex = 4;
             this.button2.Text = "Power On";
             this.button2.UseVisualStyleBackColor = true;
@@ -115,20 +115,21 @@
             // 
             this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.notifyIcon1.BalloonTipText = "Test";
-            this.notifyIcon1.BalloonTipTitle = "Clock Controller";
+            this.notifyIcon1.BalloonTipTitle = "Clock Synchronizer";
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "Clock Controller";
+            this.notifyIcon1.Text = "Clock Synchronizer";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.SystemColors.Info;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(52, 51);
+            this.label2.Location = new System.Drawing.Point(52, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(297, 52);
+            this.label2.Size = new System.Drawing.Size(297, 48);
             this.label2.TabIndex = 4;
             this.label2.Text = "-";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -141,7 +142,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(445, 305);
+            this.tabControl1.Size = new System.Drawing.Size(445, 282);
             this.tabControl1.TabIndex = 7;
             // 
             // tabPage1
@@ -150,10 +151,24 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(437, 279);
+            this.tabPage1.Size = new System.Drawing.Size(437, 256);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "USB";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.connectBtn);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Font = new System.Drawing.Font("MS UI Gothic", 14F);
+            this.groupBox1.Location = new System.Drawing.Point(9, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(416, 240);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "USB Connect";
+            this.groupBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox1_Paint);
             // 
             // tabPage2
             // 
@@ -161,7 +176,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(437, 279);
+            this.tabPage2.Size = new System.Drawing.Size(437, 256);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Sync";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -176,54 +191,40 @@
             this.groupBox2.Font = new System.Drawing.Font("MS UI Gothic", 14F);
             this.groupBox2.Location = new System.Drawing.Point(8, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(416, 260);
+            this.groupBox2.Size = new System.Drawing.Size(416, 240);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Synchronize";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.connectBtn);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("MS UI Gothic", 14F);
-            this.groupBox1.Location = new System.Drawing.Point(9, 7);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(416, 260);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "USB Connect";
-            this.groupBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox1_Paint);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(60, 123);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(66, 23);
-            this.radioButton1.TabIndex = 5;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Auto";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(60, 152);
+            this.radioButton2.Location = new System.Drawing.Point(60, 140);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(83, 23);
+            this.radioButton2.Size = new System.Drawing.Size(83, 21);
             this.radioButton2.TabIndex = 6;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Manual";
             this.radioButton2.UseVisualStyleBackColor = true;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(60, 114);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(66, 21);
+            this.radioButton1.TabIndex = 5;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Auto";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
             // ClockController
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 305);
+            this.ClientSize = new System.Drawing.Size(445, 282);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ClockController";
@@ -232,11 +233,11 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
