@@ -1,6 +1,6 @@
 ﻿namespace aquarius_host
 {
-    partial class MainForm
+    partial class ClockController
     {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClockController));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.connectBtn = new System.Windows.Forms.Button();
@@ -61,10 +61,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBox1.Location = new System.Drawing.Point(65, 156);
+            this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 16F);
+            this.textBox1.Location = new System.Drawing.Point(65, 152);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(132, 23);
+            this.textBox1.Size = new System.Drawing.Size(132, 29);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "COM3";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -106,10 +106,11 @@
             // 
             this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.notifyIcon1.BalloonTipText = "Test";
-            this.notifyIcon1.BalloonTipTitle = "TestTitle";
+            this.notifyIcon1.BalloonTipTitle = "Clock Controller";
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "Power Controller";
+            this.notifyIcon1.Text = "Clock Controller";
             this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
             // 
             // groupBox1
             // 
@@ -150,15 +151,17 @@
             this.label2.Text = "-";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // MainForm
+            // ClockController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(452, 528);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "ClockController";
+            this.ShowInTaskbar = false;
+            this.Text = "Clock Controller";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

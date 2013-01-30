@@ -10,9 +10,9 @@ using System.Threading;
 
 namespace aquarius_host
 {
-    public partial class MainForm : Form
+    public partial class ClockController : Form
     {
-        public MainForm()
+        public ClockController()
         {
             InitializeComponent();
 
@@ -36,6 +36,9 @@ namespace aquarius_host
                 SendChar('f');
                 Thread.Sleep(2000);
                 SendChar('n');
+
+                notifyIcon1.BalloonTipText = "Clock was synchronized !!";
+                notifyIcon1.ShowBalloonTip(5000);
             }
             
             
@@ -52,9 +55,17 @@ namespace aquarius_host
 
             String message = String.Empty;
 
-            if (c == 'f') message = "Power Off !!";
+            if (c == 'f')
+            {
+                message = "Power Off !!";
+                this.label2.BackColor = System.Drawing.SystemColors.Info;
+            }
 
-            if (c == 'n') message = "Power On !!";
+            else if (c == 'n')
+            {
+                message = "Power On !!";
+                this.label2.BackColor = Color.MistyRose;
+            }
 
 
             this.label2.Text = message;
@@ -125,6 +136,11 @@ namespace aquarius_host
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
         }
     }
 }
