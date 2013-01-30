@@ -17,7 +17,7 @@ namespace aquarius_host
         public ClockController()
         {
             InitializeComponent();
-            Directory.Delete(WORK_DIR, true);
+            if(Directory.Exists(WORK_DIR)) Directory.Delete(WORK_DIR, true);
             Directory.CreateDirectory(WORK_DIR);
 
 
@@ -81,9 +81,30 @@ namespace aquarius_host
                 this.label2.BackColor = Color.MistyRose;
             }
 
+            LogWrite(message);
 
             this.label2.Text = message;
         }
+
+        private static void LogWrite(string result)
+        {
+            string logfolder = @"c:\temp\aquarius-log\";
+            //実行ファイルと同フォルダにlogフォルダを作成する 
+            System.IO.Directory.CreateDirectory(logfolder);
+
+            string logfile = logfolder + @"result.log";
+
+            //現在時刻を取得 
+            DateTime dtNow = DateTime.Now;
+            string timefmt = dtNow.ToString("yyyy/MM/dd HH:mm:ss\t");
+
+            Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
+            System.IO.StreamWriter writer = new System.IO.StreamWriter(logfile, true, sjisEnc);
+
+            //追記で日時と結果を書き込む 
+            writer.WriteLine(timefmt + result);
+            writer.Close();
+        } 
 
         private void MainForm_Load(object sender, EventArgs e)
         {
