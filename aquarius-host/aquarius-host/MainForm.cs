@@ -17,7 +17,7 @@ namespace aquarius_host
         public ClockController()
         {
             InitializeComponent();
-            Directory.Delete(WORK_DIR);
+            Directory.Delete(WORK_DIR, true);
             Directory.CreateDirectory(WORK_DIR);
 
 
