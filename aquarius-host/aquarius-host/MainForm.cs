@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace aquarius_host
 {
@@ -28,8 +29,15 @@ namespace aquarius_host
         private void timer1_Tick(object sender, EventArgs e)
         {
             // 0時判定
+            DateTime now = DateTime.Now;
+            if (now.Hour == 23 && now.Minute == 59 && now.Second == 57)
+            {
+
+                SendChar('f');
+                Thread.Sleep(2000);
+                SendChar('n');
+            }
             
-            SendChar('n');
             
         }
 
@@ -42,7 +50,14 @@ namespace aquarius_host
             // Send the one character buffer.
             serialPort1.Write(buff, 0, 1);
 
-            this.label1.Text = "'" + c + "' was sent!!";
+            String message = String.Empty;
+
+            if (c == 'f') message = "Power Off !!";
+
+            if (c == 'n') message = "Power On !!";
+
+
+            this.label2.Text = message;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -59,6 +74,7 @@ namespace aquarius_host
                 serialPort1.BaudRate = 9600;
                 serialPort1.Open();
                 this.label1.Text = STATUS.CONNECTED.ToString();
+                this.label1.BackColor = Color.MistyRose;
 
                 this.button1.Enabled = true;
 
@@ -75,7 +91,40 @@ namespace aquarius_host
 
         private void button1_Click(object sender, EventArgs e)
         {
+            SendChar('f');
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
             SendChar('n');
+        }
+
+        
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.F)
+            {
+                SendChar('f');
+
+            }
+            else if (keyData == Keys.N)
+            {
+                SendChar('n');
+
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void groupBox1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
