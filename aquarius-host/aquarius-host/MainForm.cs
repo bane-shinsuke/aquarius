@@ -175,8 +175,15 @@ namespace aquarius_host
 
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
         {
-            this.WindowState = FormWindowState.Normal;
-            this.Activate();
+            // フォームを表示する  
+            this.Visible = true;
+            // 現在の状態が最小化の状態であれば通常の状態に戻す  
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            // フォームをアクティブにする  
+            this.Activate();   
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -189,6 +196,17 @@ namespace aquarius_host
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 
+        }
+
+        private void ClockController_ClientSizeChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == System.Windows.Forms.FormWindowState.Minimized)
+            {
+                // フォームが最小化の状態であればフォームを非表示にする  
+                this.Hide();
+                // トレイリストのアイコンを表示する  
+                notifyIcon1.Visible = true;
+            }  
         }
     }
 }

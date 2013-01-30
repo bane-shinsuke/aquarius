@@ -201,7 +201,7 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(60, 140);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(83, 21);
+            this.radioButton2.Size = new System.Drawing.Size(83, 23);
             this.radioButton2.TabIndex = 6;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Manual";
@@ -214,7 +214,7 @@
             this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(60, 114);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(66, 21);
+            this.radioButton1.Size = new System.Drawing.Size(66, 23);
             this.radioButton1.TabIndex = 5;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Auto";
@@ -231,6 +231,7 @@
             this.ShowInTaskbar = false;
             this.Text = "Clock Synchronizer";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.ClientSizeChanged += new System.EventHandler(this.ClockController_ClientSizeChanged);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
