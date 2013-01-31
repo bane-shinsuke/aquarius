@@ -21,7 +21,7 @@ public class Settings
     //コンストラクタ
     public Settings()
     {
-        comValue = string.Empty;
+        comValue = "COMx";
     }
 
     //Settingsクラスのただ一つのインスタンス
