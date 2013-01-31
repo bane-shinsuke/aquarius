@@ -84,6 +84,8 @@ public class Settings
     {
         string path = GetSettingPath();
 
+        if (File.Exists(path)) File.Create(path);
+
         FileStream fs = new FileStream(path,
             FileMode.Open,
             FileAccess.Read);
