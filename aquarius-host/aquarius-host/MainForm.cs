@@ -109,30 +109,57 @@ namespace aquarius_host
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.label1.Text = STATUS.NOT_CONNECT.ToString();
+
+            Settings.LoadFromBinaryFile();
+            this.textBox1.Text = Settings.Instance.ComValue;
+            Connect();
         }
+
+        //Settings setting = new Settings();
 
         private void connectBtn_Click(object sender, EventArgs e)
         {
             try
             {
 
-                serialPort1.PortName = this.textBox1.Text;
-                serialPort1.BaudRate = 9600;
-                serialPort1.Open();
-                this.label1.Text = STATUS.CONNECTED.ToString();
-                this.label1.BackColor = Color.MistyRose;
+                Connect();
+                SaveSetting();
 
-                this.button1.Enabled = true;
-
-                this.timer1.Enabled = true;
+                
             }
-            catch
-            {
+        catch (Exception ex)
+        {
+            //FileNotFoundExceptionをキャッチした時
+            System.Console.WriteLine(ex.Message);
+            LogWrite(ex.Message);
+
                 this.label1.Text = STATUS.ERROR.ToString();
                 //this.label1.Text += "\n";
+                
 
             }
 
+        }
+
+        private void Connect()
+        {
+            if (this.serialPort1.IsOpen) this.serialPort1.Close();
+
+            serialPort1.PortName = this.textBox1.Text;
+            serialPort1.BaudRate = 9600;
+            serialPort1.Open();
+            this.label1.Text = STATUS.CONNECTED.ToString();
+            this.label1.BackColor = Color.MistyRose;
+
+            this.button1.Enabled = true;
+
+            this.timer1.Enabled = true;
+        }
+
+        private void SaveSetting()
+        {
+            Settings.Instance.ComValue = this.textBox1.Text;
+            Settings.SaveToBinaryFile();
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -74,7 +74,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(132, 29);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "COM3";
+            this.textBox1.Text = "COMx";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // button1
