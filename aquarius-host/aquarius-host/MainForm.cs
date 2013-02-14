@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace aquarius_host
 {
@@ -25,13 +26,17 @@ namespace aquarius_host
 
         enum STATUS
         {
-            NOT_CONNECT,
+            NOT_CONNECTED,
             CONNECTED,
             ERROR,
         }
 
+        long cnt = 0;
+
+        [MethodImpl(MethodImplOptions.Synchronized)]
         private void timer1_Tick(object sender, EventArgs e)
         {
+            LogWrite((cnt++).ToString());
             // REST API 判定
             if(File.Exists(WORK_DIR + "/on")) {
                 SendChar('n');
@@ -58,14 +63,24 @@ namespace aquarius_host
             
         }
 
+        [MethodImpl(MethodImplOptions.Synchronized)]
         private void SendChar(char c)
         {
             char[] buff = new char[1];
 
 
             buff[0] = c;
+
+            // Open serial port
+            if (!serialPort1.IsOpen)
+            {
+                Connect();
+            }
+
             // Send the one character buffer.
             serialPort1.Write(buff, 0, 1);
+
+            Disconnect();
 
             String message = String.Empty;
 
@@ -108,7 +123,7 @@ namespace aquarius_host
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            this.label1.Text = STATUS.NOT_CONNECT.ToString();
+            this.label1.Text = STATUS.NOT_CONNECTED.ToString();
 
             Settings.LoadFromBinaryFile();
             this.textBox1.Text = Settings.Instance.ComValue;
@@ -125,29 +140,61 @@ namespace aquarius_host
                 Connect();
                 SaveSetting();
 
-                
+
             }
-        catch (Exception ex)
-        {
-            //FileNotFoundExceptionをキャッチした時
-            System.Console.WriteLine(ex.Message);
-            LogWrite(ex.Message);
+            catch (Exception ex)
+            {
+                //FileNotFoundExceptionをキャッチした時
+                System.Console.WriteLine(ex.Message);
+                LogWrite(ex.Message);
 
                 this.label1.Text = STATUS.ERROR.ToString();
                 //this.label1.Text += "\n";
-                
 
+
+            }
+            finally
+            {
+                //Disconnect();
             }
 
         }
 
+        private void Disconnect()
+        {
+            this.serialPort1.Close();
+            //this.serialPort1.Dispose();
+            this.label1.Text = STATUS.NOT_CONNECTED.ToString();
+            this.label1.BackColor = System.Drawing.SystemColors.Info;
+        }
+
         private void Connect()
         {
-            if (this.serialPort1.IsOpen) this.serialPort1.Close();
+            if (this.serialPort1.IsOpen)
+            {
+                Disconnect();
+                
+
+            }
 
             serialPort1.PortName = this.textBox1.Text;
             serialPort1.BaudRate = 9600;
-            serialPort1.Open();
+
+            while (true)
+            {
+
+                try
+                {
+
+                    serialPort1.Open();
+                    if (serialPort1.IsOpen) break;
+
+                }
+                catch
+                {
+                    Thread.Sleep(1000);
+                }
+            }
             this.label1.Text = STATUS.CONNECTED.ToString();
             this.label1.BackColor = Color.MistyRose;
 
