@@ -127,7 +127,24 @@ namespace aquarius_host
 
             Settings.LoadFromBinaryFile();
             this.textBox1.Text = Settings.Instance.ComValue;
-            Connect();
+            try
+            {
+
+                Connect();
+
+                
+            }
+            catch (Exception ex)
+            {
+                //FileNotFoundExceptionをキャッチした時
+                System.Console.WriteLine(ex.Message);
+                LogWrite(ex.Message);
+
+                this.label1.Text = STATUS.ERROR.ToString();
+                //this.label1.Text += "\n";
+                
+
+            }
         }
 
         //Settings setting = new Settings();
