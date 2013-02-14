@@ -127,7 +127,24 @@ namespace aquarius_host
 
             Settings.LoadFromBinaryFile();
             this.textBox1.Text = Settings.Instance.ComValue;
-            Connect();
+            try
+            {
+
+                Connect();
+
+                
+            }
+            catch (Exception ex)
+            {
+                //FileNotFoundExceptionをキャッチした時
+                System.Console.WriteLine(ex.Message);
+                LogWrite(ex.Message);
+
+                this.label1.Text = STATUS.ERROR.ToString();
+                //this.label1.Text += "\n";
+                
+
+            }
         }
 
         //Settings setting = new Settings();
@@ -192,13 +209,14 @@ namespace aquarius_host
                 }
                 catch
                 {
+                    LogWrite("********* Retrying to connect ... ********* ");
                     Thread.Sleep(1000);
                 }
             }
             this.label1.Text = STATUS.CONNECTED.ToString();
             this.label1.BackColor = Color.MistyRose;
 
-            this.button1.Enabled = true;
+            //this.button1.Enabled = true;
 
             this.timer1.Enabled = true;
         }
